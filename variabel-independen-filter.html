@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard Visualisasi Skripsi</title>
+  <link rel="icon" href="stis.png" type="image/png" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Visualisasi Spasial Variabel Sosial dan Lingkungan Prevalensi Balita Stunting di Pulau Jawa Tahun 2023</h1>
+  </header>
+
+  <nav class="tab-menu">
+    <a href="index.html" class="tab">Stunting</a>
+    <a href="variabel-independen.html" class="tab active">Peta Persebaran Variabel Independen</a>
+    <a href="kelompok-kabkota.html" class="tab">Peta Kelompok Kabupaten/Kota</a>
+  </nav>
+
+  <main class="content">
+    <!-- Bagian Introduction Variabel -->
+    <section class="intro-box">
+      <p>Pilih variabel sosial dan lingkungan penyebab stunting untuk ditampilkan pada peta:</p>
+      <select id="mapSelector" onchange="updateMap()">
+        <option value="jamban">Persentase Keluarga Sasaran dengan Jamban Tidak Layak</option>
+        <option value="poi">POI Distance Fasilitas Kesehatan</option>
+        <option value="perkap">Rata-rata Pengeluaran Per Kapita Makanan</option>
+        <option value="imunisasi">Persentase Balita Yang Pernah Mendapat Imunisasi Dasar Lengkap</option>
+        <option value="rls">Rata-rata Lama Sekolah Perempuan</option>
+        <option value="o3">Konsentrasi Ground Level Ozone</option>
+        <option value="ndvi">Normalized Difference Vegetation Index (NDVI)</option>
+        <option value="lst">Land Surface Temperature (LST)</option>
+      </select>
+    </section>
+
+    <!-- Bagian Peta Persebaran Variabel Independen -->
+    <section class="map-box-independen">
+      <iframe id="map-jamban" class="active" src="Peta/qgis2web_2025_07_26-14_48_10_303437/index.html" title="Peta Persentase Keluarga Sasaran dengan Jamban Tidak Layak"></iframe>
+      <iframe id="map-poi" src="Peta/qgis2web_2025_07_26-18_58_33_185438/index.html" title="Peta POI Distance Fasilitas Kesehatan" ></iframe>
+      <iframe id="map-perkap" src="Peta/qgis2web_2025_07_26-19_12_32_458795/index.html" title="Peta Rata-rata Pengeluaran Per Kapita Makanan"></iframe>
+      <iframe id="map-imunisasi" src="Peta/qgis2web_2025_07_26-19_19_23_280072/index.html" title="Peta Persentase Balita Yang Pernah Mendapat Imunisasi Dasar Lengkap"></iframe>
+      <iframe id="map-rls" src="Peta/qgis2web_2025_07_26-19_30_39_187730/index.html" title="Peta Rata-rata Lama Sekolah Perempuan"></iframe>
+      <iframe id="map-o3" src="Peta/qgis2web_2025_07_28-07_15_47_528202/index.html" title="Peta Konsentrasi Ground Level Ozone"></iframe>
+      <iframe id="map-ndvi" src="Peta/qgis2web_2025_07_26-21_08_55_466258/index.html" title="Peta Normalized Difference Vegetation Index (NDVI)"></iframe>
+      <iframe id="map-lst" src="Peta/qgis2web_2025_07_26-21_18_14_477984/index.html" title="Peta Land Surface Temperature (LST)"></iframe>
+
+      <!-- Legenda dan Informasi -->
+      <!-- Persentase Keluarga Sasaran dengan Jamban Tidak Layak -->
+      <div class="simple-legend2" id="legend-jamban">
+        <div class="legend-label2">Persentase Keluarga Sasaran dengan Jamban Tidak Layak</div>
+        <div class="legend-gradient2">
+          <div style="background-color: #cef0c0;"></div>
+          <div style="background-color: #7bc77c;"></div>
+          <div style="background-color: #00441b;"></div>
+        </div>
+        <div class="legend-range2">
+          <span>2,4</span>
+          <span>42,1</span>
+        </div>
+      </div>
+
+      <div class="map-description" id="desc-jamban">
+        <p>Variabel ini menunjukkan kondisi sanitasi tidak layak pada keluarga pasangan usia subur, ibu hamil, anak usia 0–23 bulan, dan anak usia 0–59 bulan,
+          yaitu mengenai kepemilikan jamban tidak layak.
+          Semakin gelap warna suatu wilayah maka semakin tinggi persentase keluarga sasaran yang tidak memiliki jamban layak.
+          Kondisi ini meningkatkan risiko terpapar bakteri penyebab infeksi melalui air dan makanan yang terkontaminasi.
+        </p>
+      </div>
+
+      <!-- POI Distance Fasilitas Kesehatan -->
+      <div class="simple-legend2" id="legend-poi" style="display:none;">
+        <div class="legend-label2">POI Distance Fasilitas Kesehatan</div>
+        <div class="legend-gradient2">
+          <div style="background-color: #edf8fb;"></div>
+          <div style="background-color: #8c96c6;"></div>
+          <div style="background-color: #810f7c;"></div>
+        </div>
+        <div class="legend-range2">
+          <span>0,0297</span>
+          <span>12,2921</span>
+        </div>
+      </div>
+
+      <div class="map-description" id="desc-poi" style="display: none;">
+        <p>Variabel ini menunjukkan aksesibilitas suatu wilayah terhadap fasilitas kesehatan. Semakin gelap warna
+          suatu wilayah maka semakin tinggi nilai POI Distance Fasilitas Kesehatan, berarti semakin jauh pula jarak
+          suatu wilayah terhadap fasilitas kesehatan.
+        </p>
+      </div>
+
+      <!-- Rata-rata Pengeluaran Per Kapita Makanan -->
+      <div class="simple-legend2" id="legend-perkap" style="display:none;">
+        <div class="legend-label2">Rata-rata Pengeluaran Per Kapita Makanan</div>
+        <div class="legend-gradient2">
+          <div style="background-color: #fef0d9;"></div>
+          <div style="background-color: #fc8d59;"></div>
+          <div style="background-color: #b30000;"></div>
+        </div>
+        <div class="legend-range2">
+          <span>456.234</span>
+          <span>1.187.989</span>
+        </div>
+      </div>
+
+      <div class="map-description" id="desc-perkap" style="display: none;">
+        <p>Variabel ini menunjukkan besarnya biaya yang dikeluarkan oleh setiap individu untuk konsumsi makanan 
+          dalam waktu satu bulan. Semakin gelap warna suatu wilayah maka semakin besar rata-rata pengeluaran per kapita
+          makanannya.
+        </p>
+      </div>
+
+      <!-- Persentase Balita Yang Pernah Mendapat Imunisasi Dasar Lengkap -->
+      <div class="simple-legend2" id="legend-imunisasi" style="display:none;">
+        <div class="legend-label2">Persentase Balita Yang Pernah Mendapat Imunisasi Dasar Lengkap</div>
+        <div class="legend-gradient2">
+          <div style="background-color: #ffffcc;"></div>
+          <div style="background-color: #78c679;"></div>
+          <div style="background-color: #006837;"></div>
+        </div>
+        <div class="legend-range2">
+          <span>32,24</span>
+          <span>82,81</span>
+        </div>
+      </div>
+
+      <div class="map-description" id="desc-imunisasi" style="display: none;">
+        <p>Variabel ini menunjukkan persentase balita yang pernah mendapatkan imunisasi dasar lengkap. Semakin
+          gelap warna suatu wilayah maka semakin tinggi persentase balita yang pernah mendapatkan imunisasi dasar lengkap.
+          Imunisasi dasar berperan penting untuk memberikan perlindungan pada anak dari infeksi berulang yang
+           dapat berpengaruh terhadap kondisi gizinya.
+        </p>
+      </div>
+
+      <!-- Rata-rata Lama Sekolah Perempuan -->
+      <div class="simple-legend2" id="legend-rls" style="display:none;">
+        <div class="legend-label2">Rata-rata Lama Sekolah Perempuan</div>
+        <div class="legend-gradient2">
+          <div style="background-color: #feebe2;"></div>
+          <div style="background-color: #f768a1;"></div>
+          <div style="background-color: #7a0177;"></div>
+        </div>
+        <div class="legend-range2">
+          <span>4,64</span>
+          <span>11,75</span>
+        </div>
+      </div>
+
+      <div class="map-description" id="desc-rls" style="display: none;">
+        <p>Variabel ini menunjukkan tingkat pendidikan perempuan berdasarkan jumlah tahun yang digunakan
+          oleh penduduk perempuan dalam menjalani pendidikan formal. Semakin gelap warna suatu wilayah maka
+          semakin tinggi rata-rata lama sekolah perempuan. Tingginya pendidikan seorang perempuan dapat meningkatkan 
+          pengetahuan dan pemahamannya mengenai pola asuh, kesehatan, dan gizi anak.
+        </p>
+      </div>
+
+      <!-- Konsentrasi Ground Level Ozone (O3) -->
+      <div class="simple-legend2" id="legend-o3" style="display:none;">
+        <div class="legend-label2">Konsentrasi Ground Level Ozone (O3)</div>
+        <div class="legend-gradient2">
+          <div style="background-color: #ffffcc;"></div>
+          <div style="background-color: #41b6c4;"></div>
+          <div style="background-color: #253494;"></div>
+        </div>
+        <div class="legend-range2">
+          <span>0,00894</span>
+          <span>0,0102</span>
+        </div>
+      </div>
+
+      <div class="map-description" id="desc-o3" style="display: none;">
+        <p>Variabel ini digunakan untuk menggambarkan kondisi lingkungan yang berkaitan dengan polusi udara.
+          Semakin gelap suatu wilayah maka semakin tinggi konsentrasi ground level ozone (O3). Kondisi ini dapat 
+          berdampak buruk pada kesehatan.
+        </p>
+      </div>
+
+      <!-- Normalized Difference Vegetation Index (NDVI) -->
+      <div class="simple-legend2" id="legend-ndvi" style="display:none;">
+        <div class="legend-label2">Normalized Difference Vegetation Index (NDVI)</div>
+        <div class="legend-gradient2">
+          <div style="background-color: #d7ebfe;"></div>
+          <div style="background-color: #73b2d8;"></div>
+          <div style="background-color: #08306b;"></div>
+        </div>
+        <div class="legend-range2">
+          <span>0,0608</span>
+          <span>0,6173</span>
+        </div>
+      </div>
+
+      <div class="map-description" id="desc-ndvi" style="display: none;">
+        <p>Variabel ini digunakan untuk menggambarkan kondisi lingkungan yang berkaitan dengan kerapatan dan kesehatan
+          vegetasi di suatu wilayah. Semakin gelap suatu wilayah maka semakin tinggi nilai NDVI yang berarti bahwa wilayah
+          tersebut masih memiliki kerapatan vegetasi yang tinggi dengan kondisi lahan subur dan potensi ekosistem yang baik 
+          untuk mendukung ketersediaan sumber pangan.
+        </p>
+      </div>
+
+      <!-- Land Surface Temperature (LST) -->
+      <div class="simple-legend2" id="legend-lst" style="display:none;">
+        <div class="legend-label2">Land Surface Temperature (LST)</div>
+        <div class="legend-gradient2">
+          <div style="background-color: #fdd8c5;"></div>
+          <div style="background-color: #fc7456;"></div>
+          <div style="background-color: #ca041e;"></div>
+        </div>
+        <div class="legend-range2">
+          <span>24,49</span>
+          <span>38,16</span>
+        </div>
+      </div>
+
+      <div class="map-description" id="desc-lst" style="display: none;">
+        <p>Variabel ini digunakan untuk menggambarkan kondisi lingkungan yang berkaitan dengan suhu permukaan tanah
+          (LST). Semakin gelap warna suatu wilayah maka semakin tinggi suhu permukaan tanahnya. Kondisi ini dapat memengaruhi 
+          produksi pangan dan penyebaran penyakit.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Dashboard Visualisasi Skripsi oleh Aghnia Amalia</p>
+  </footer>
+
+  <script>
+    function updateMap() {
+      const selected = document.getElementById("mapSelector").value;
+
+      const maps = document.querySelectorAll(".map-box-independen iframe");
+      const legends = document.querySelectorAll(".simple-legend2");
+      const descriptions = document.querySelectorAll(".map-description");
+
+      // Sembunyikan semua peta, legenda, dan deskripsi
+      maps.forEach(m => m.classList.remove("active"));
+      legends.forEach(l => l.style.display = "none");
+      descriptions.forEach(d => d.style.display = "none");
+
+      // Tampilkan peta, legenda, dan deskripsi sesuai pilihan
+      document.getElementById(`map-${selected}`).classList.add("active");
+      document.getElementById(`legend-${selected}`).style.display = "block";
+      document.getElementById(`desc-${selected}`).style.display = "block";
+    }
+  </script>
+</body>
+</html>

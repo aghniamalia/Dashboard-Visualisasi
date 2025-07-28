@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard Visualisasi Skripsi</title>
+  <link rel="icon" href="stis.png" type="image/png" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Visualisasi Spasial Variabel Sosial dan Lingkungan Prevalensi Balita Stunting di Pulau Jawa Tahun 2023</h1>
+  </header>
+
+  <nav class="tab-menu">
+    <a href="index.html" class="tab active">Stunting</a>
+    <a href="variabel-independen-filter.html" class="tab">Peta Persebaran Variabel Independen</a>
+    <a href="kelompok-kabkota.html" class="tab">Peta Kelompok Kabupaten/Kota</a>
+  </nav>
+
+  <main class="content">
+    <!-- Introduction Stunting -->
+    <section class="intro-box-stunting">
+      <p><strong>Stunting </strong>merupakan salah satu permasalahan serius di bidang kesehatan, ditandai dengan
+        <strong>gangguan pertumbuhan dan perkembangan anak </strong>akibat 
+        <strong>kekurangan gizi kronis </strong>serta <strong>infeksi berulang </strong>yang terjadi selama
+        <strong>1.000 Hari Pertama Kehidupan.</strong>
+        Isu ini menjadi <strong>perhatian global</strong>, tercantum dalam <strong>Tujuan 2 Target 2.2 </strong>dari 
+        <strong>Sustainable Development Goals (SDGs)</strong>, yaitu mengakhiri segala bentuk malnutrisi pada tahun 2030.
+        <strong>Di Indonesia</strong>, penanggulangan stunting telah menjadi <strong>isu  strategis nasional </strong>dalam 
+        <strong>RPJMN  2025–2029</strong>, dengan target: menurunkan prevalensi stunting menjadi <strong>11% pada tahun 2029.</strong>
+        Mengacu pada data tahun 2023, di mana prevalensi stunting masih sebesar <strong>21,5%</strong>, maka diperlukan 
+        <strong>intervensi yang tepat sasaran</strong> dan berbasis data untuk mencapai target tersebut.
+      </p>
+    </section>
+
+    <section class="map-box">
+      <!-- Peta Stunting -->
+      <h3 style="margin-top: 30px;">Peta Persebaran Prevalensi Balita Stunting di Pulau Jawa Tahun 2023</h3>
+      <iframe 
+        src="Peta/qgis2web_2025_07_26-14_42_25_769176/index.html" 
+        width="100%" 
+        height="500" 
+        style="border: 1px solid #ccc; border-radius: 6px; margin-top: 10px;"
+        title="Peta Interaktif"
+      ></iframe>
+
+      <!-- Legenda -->
+      <div class="simple-legend">
+        <div class="legend-label">Prevalensi Balita Stunting</div>
+        <div class="legend-gradient">
+          <div style="background-color: #c6dbef;"></div>
+          <div style="background-color: #73b2d8;"></div>
+          <div style="background-color: #08306b;"></div>
+        </div>
+        <div class="legend-range">
+          <span>1,6</span>
+          <span>35,5</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Informasi -->
+    <section class="intro-box-visualisasi">
+      <p>Pemerintah mencatat bahwa sekitar <strong>74,68% atau 3.620.013 balita stunting</strong> secara nasional berada 
+        di <strong>15 provinsi prioritas khusus pencegahan stunting</strong>— termasuk <strong> empat dari enam provinsi </strong>yang ada di 
+        <strong>Pulau Jawa.</strong> Jika diamati pada visualisasi peta di atas, terlihat bahwa 
+        <strong> persebaran prevalensi balita stunting di kabupaten/kota Pulau Jawa sangat beragam.</strong>
+        Semakin gelap warna suatu wilayah maka semakin tinggi prevalensi balita stunting.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Dashboard Visualisasi Skripsi oleh Aghnia Amalia</p>
+  </footer>
+</body>
+</html>

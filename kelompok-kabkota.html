@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard Visualisasi Skripsi</title>
+  <link rel="icon" href="stis.png" type="image/png" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Visualisasi Spasial Variabel Sosial dan Lingkungan Prevalensi Balita Stunting di Pulau Jawa Tahun 2023</h1>
+  </header>
+
+  <nav class="tab-menu">
+    <a href="index.html" class="tab">Stunting</a>
+    <a href="variabel-independen-filter.html" class="tab">Peta Persebaran Variabel Independen</a>
+    <a href="kelompok-kabkota.html" class="tab active">Peta Kelompok Kabupaten/Kota</a>
+  </nav>
+
+  <main class="content">
+    <!-- Introduction Peta Kelompok Kabupaten/Kota -->
+    <section class="intro-box-stunting">
+      <p>Metode <strong>Geographically Weighted Regression (GWR)</strong> menghasilkan koefisien regresi yang bersifat lokal untuk setiap wilayah. 
+        <strong>Pengujian signifikansi parameter secara parsial </strong>pada model GWR dilakukan untuk mengidentifikasi variabel-variabel yang berpengaruh signifikan 
+        di masing-masing kabupaten/kota. Berdasarkan hasil pengujian tersebut, terbentuk <strong>14 kelompok kabupaten/kota</strong> yang diklasifikasikan menurut variabel 
+        yang berpengaruh signifikan terhadap prevalensi stunting di wilayah tersebut.
+      </p>
+    </section>
+
+    <section class="map-box">
+      <!-- Peta Hasil GWR -->
+      <h3 style="margin-top: 30px;">Peta Kelompok Kabupaten/Kota berdasarkan Variabel yang Berpengaruh Signifikan terhadap </h3>
+      <h3>Prevalensi Balita Stunting</h3>
+      <iframe 
+        src="Peta/qgis2web_2025_07_27-23_53_46_846205/index.html" 
+        width="100%" 
+        height="500" 
+        style="border: 1px solid #ccc; border-radius: 6px; margin-top: 10px;"
+        title="Peta Interaktif"
+      ></iframe>
+
+      <!-- Legenda -->
+      <div class="simple-legend3" id="legend-jamban">
+        <div class="legend-label3">Kelompok Berdasarkan Variabel Yang Signifikan</div>
+
+        <div class="legend-item3">
+          <div class="legend-color3" style="background-color: #d3d3d3;"></div>
+          <span>-</span>
+        </div>
+        <div class="legend-item3">
+          <div class="legend-color3" style="background-color: #1f78b4;"></div>
+          <span>X1, X3, X4, X6, X8 
+            (Persentase Keluarga Sasaran dengan Jamban Tidak Layak, 
+            Rata-rata Pengeluaran Per Kapita Makanan, 
+            Persentase Balita yang Pernah Mendapat Imunisasi Dasar Lengkap, 
+            O3, LST)</span>
+        </div>
+        <div class="legend-item3">
+          <div class="legend-color3" style="background-color: #a6cee3;"></div>
+          <span>X1, X3, X4, X8
+            (Persentase Keluarga Sasaran dengan Jamban Tidak Layak, 
+            Rata-rata Pengeluaran Per Kapita Makanan, 
+            Persentase Balita yang Pernah Mendapat Imunisasi Dasar Lengkap, 
+            LST)
+          </span>
+        </div>
+        <div class="legend-item3">
+          <div class="legend-color3" style="background-color: #5ac8c8;"></div>
+          <span>X1, X3, X6, X8
+            (Persentase Keluarga Sasaran dengan Jamban Tidak Layak, 
+            Rata-rata Pengeluaran Per Kapita Makanan,  
+            O3, LST)
+          </span>
+        </div>
+        <div class="legend-item3">
+          <div class="legend-color3" style="background-color: #00772e;"></div>
+          <span>X2
+            (POI Distance Fasilitas Kesehatan)
+          </span>
+        </div>
+        <div class="legend-item3">
+          <div class="legend-color3" style="background-color: #33a02c;"></div>
+          <span>X2, X6
+            (POI Distance Fasilitas Kesehatan, O3)
+          </span>
+        </div>
+        <div class="legend-item3">
+          <div class="legend-color3" style="background-color: #fdbf6f;"></div>
+          <span>X2, X6, X8
+            (POI Distance Fasilitas Kesehatan, O3, LST)
+          </span>
+        </div>
+        <div class="legend-item3">
+          <div class="legend-color3" style="background-color: #b2df8a;"></div>
+          <span>X2, X8
+            (POI Distance Fasilitas Kesehatan, LST)
+          </span>
+        </div>
+        <div class="legend-item3">
+          <div class="legend-color3" style="background-color: #e31a1c;"></div>
+          <span>X3, X4, X6, X8
+            (Rata-rata Pengeluaran Per Kapita Makanan, 
+            Persentase Balita yang Pernah Mendapat Imunisasi Dasar Lengkap, 
+            O3, LST)
+          </span>
+        </div>
+        <div class="legend-item3">
+          <div class="legend-color3" style="background-color: #fb9a99;"></div>
+          <span>X3, X4, X8
+            (Rata-rata Pengeluaran Per Kapita Makanan, 
+            Persentase Balita yang Pernah Mendapat Imunisasi Dasar Lengkap, 
+            LST)
+          </span>
+        </div>
+        <div class="legend-item3">
+          <div class="legend-color3" style="background-color: #be64ac;"></div>
+          <span>X3, X6, X8
+            (Rata-rata Pengeluaran Per Kapita Makanan,  
+            O3, LST)
+          </span>
+        </div>
+        <div class="legend-item3">
+          <div class="legend-color3" style="background-color: #ff7f00;"></div>
+          <span>X3, X8
+            (Rata-rata Pengeluaran Per Kapita Makanan, 
+            LST)
+          </span>
+        </div>
+        <div class="legend-item3">
+          <div class="legend-color3" style="background-color: #a47158;"></div>
+          <span>X6
+            (O3)
+          </span>
+        </div>
+        <div class="legend-item3">
+          <div class="legend-color3" style="background-color: #fefe5a;"></div>
+          <span>X6, X8
+            (O3, LST)
+          </span>
+        </div>
+        <div class="legend-item3">
+          <div class="legend-color3" style="background-color: #fad13c;"></div>
+          <span>X8
+            (LST)
+          </span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Dashboard Visualisasi Skripsi oleh Aghnia Amalia</p>
+  </footer>
+</body>
+</html>

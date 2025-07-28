@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard DBD Pulau Jawa</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Visualisasi Variabel Sosial dan Lingkungan terhadap Prevalensi Balita Stunting di Pulau Jawa Tahun 2023</h1>
+  </header>
+
+  <nav class="tab-menu">
+    <a href="index.html" class="tab">Prevalensi Balita Stunting</a>
+    <a href="variabel-independen.html" class="tab active">Peta Persebaran Variabel Independen</a>
+    <a href="kelompok-kabkota.html" class="tab">Peta Kelompok Kabupaten/Kota</a>
+  </nav>
+
+  <main class="content">
+    <section class="intro-box">
+      <p> Teks </p>
+    </section>
+
+    <section class="map-box">
+      <!-- Peta interaktif hasil QGIS2Web -->
+      <h3 style="margin-top: 30px;">Peta Persebaran Persentase Keluarga Sasaran dengan Jamban Tidak Layak</h3>
+      <iframe 
+        src="Peta/qgis2web_2025_07_26-14_48_10_303437/index.html" 
+        width="100%" 
+        height="400" 
+        style="border: 1px solid #ccc; border-radius: 6px; margin-top: 10px;"
+        title="Peta Interaktif"
+      ></iframe>
+
+      <!-- Legenda NDMI -->
+      <div class="simple-legend2">
+        <div class="legend-label2">Persentase Keluarga Sasaran dengan Jamban Tidak Layak</div>
+        <div class="legend-gradient2">
+          <div style="background-color: #cef0c0;"></div>
+          <div style="background-color: #7bc77c;"></div>
+          <div style="background-color: #00441b;"></div>
+        </div>
+        <div class="legend-range2">
+          <span>1,6</span>
+          <span>35,5</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Visualisasi oleh Lia. Data: Kementerian Kesehatan RI</p>
+  </footer>
+</body>
+</html>
